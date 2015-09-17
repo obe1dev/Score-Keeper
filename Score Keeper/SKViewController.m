@@ -22,23 +22,29 @@
     //self.view.backgroundColor = [UIColor blueColor];
     
     self.title = @"Score Keeper";
+    
+    //for(NSInteger i = 0; i<4; i++){
+    
     UIView *scoreView = [UIView new];
-    scoreView.frame = CGRectMake(0, 64, self.view.frame.size.width, 150);
-    scoreView.backgroundColor = [UIColor lightGrayColor];
+    
+    scoreView.frame = CGRectMake(0, 64, self.view.frame.size.width, 130);
+    scoreView.backgroundColor = [UIColor whiteColor];
+    
     
     UITextField * textField = [UITextField new];
-    textField.frame = CGRectMake(0, 50, self.view.frame.size.width/3, 50);
+    textField.frame = CGRectMake(20, 50, self.view.frame.size.width/3, 50);
     textField.backgroundColor = [UIColor whiteColor];
     textField.placeholder = @"player name";
     
     self.scoreLabel = [UILabel new];
-    self.scoreLabel.frame = CGRectMake(125, 50, 50, 50);
+    self.scoreLabel.frame = CGRectMake(self.view.frame.size.width/2, 50, 30, 50);
     self.scoreLabel.backgroundColor = [UIColor whiteColor];
     self.scoreLabel.text = @"0";
     
     UIStepper *stepper = [UIStepper new];
-    stepper.frame = CGRectMake(200, 50, 50, 50);
+    stepper.frame = CGRectMake(200, 60, 50, 50);
     
+    //calls the method updateScore
     [stepper addTarget:self action:@selector(updateScore:) forControlEvents:UIControlEventValueChanged];
     
     [scoreView addSubview:stepper];
@@ -46,7 +52,11 @@
     [scoreView addSubview:textField];
     
     [self.view addSubview:scoreView];
+        
+   //}
+    
 }
+
 
 -(void) updateScore:(UIStepper *)sender {
     NSInteger score = (NSInteger) sender.value;
